@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameAccounts - Shop Tài Khoản Game Chất Lượng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a3de8;
+            --secondary: #ff5722;
+            --dark: #222639;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #13141f;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(20, 21, 33, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:before {
+            width: 100%;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-actions a {
+            margin-left: 15px;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .search-btn, .cart-btn, .account-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(106, 61, 232, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover, .cart-btn:hover, .account-btn:hover {
+            background: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('/api/placeholder/1200/600') no-repeat center center;
+            background-size: cover;
+            height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 70px;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(34, 38, 57, 0.9), rgba(20, 21, 33, 0.8));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #5426e0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+        }
+        
+        /* Featured Categories */
+        .featured-categories {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .section-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .category-card {
+            background: linear-gradient(to bottom right, #222639, #191a2e);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .category-content p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Featured Products */
+        .featured-products {
+            padding: 60px 0;
+            background-color: #191a2e;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: #222639;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 15px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .product-game {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .product-level {
+            color: #aaa;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .product-price span {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .product-features {
+            margin-bottom: 15px;
+        }
+        
+        .product-features ul {
+            list-style: none;
+        }
+        
+        .product-features ul li {
+            margin-bottom: 5px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .product-features ul li i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .wishlist-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wishlist-btn:hover {
+            background: #dc3545;
+            color: #fff;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            background: linear-gradient(to bottom right, #222639, #191a2e);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+        
+        .testimonial-rating {
+            color: var(--warning);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #eee;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(to right, #6a3de8, #5426e0);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            background: #fff;
+            color: var(--primary);
+        }
+        
+        .cta-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #13141f;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-column p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+        }
+        
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+        
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .newsletter p {
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .newsletter-btn {
+            padding: 0 20px;
+            background: var(--primary);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #5426e0;
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/api/placeholder/40/40" alt="Logo">
+                    <h1>GameAccounts</h1>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Trang chủ</a></li>
+                        <li><a href="#">Danh mục</a></li>
+                        <li><a href="#">Hot Deal</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="user-actions">
+                    <a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+                    <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#" class="account-btn"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Nâng tầm trải nghiệm game của bạn</h2>
+                <p>Khám phá kho tài khoản game đa dạng với nhiều ưu đãi hấp dẫn. Mua ngay để nhận được những tài khoản chất lượng với giá tốt nhất thị trường.</p>
+                <a href="#" class="btn">Khám phá ngay</a>
+                <a href="#" class="btn btn-secondary">Xem ưu đãi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Danh mục nổi bật</h2>
+                <p>Khám phá các tài khoản game hot nhất hiện nay</p>
+            </div>
+            
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/300/180" alt="MOBA Games">
+                    </div>
+                    <div class="category-content">
+                        <h3>MOBA Games</h3>
+                        <p>Liên Minh Huyền Thoại, Mobile Legends...</p>
+                        <a href="#" class="btn btn-sm">Xem thêm</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/300/180" alt="Battle Royale">
+                    </div>
+                    <div class="category-content">
+                        <h3>Battle Royale</h3>
+                        <p>PUBG, Free Fire, Fortnite...</p>
+                        <a href="#" class="btn btn-sm">Xem thêm</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/300/180" alt="RPG Games">
+                    </div>
+                    <div class="category-content">
+                        <h3>RPG Games</h3>
+                        <p>Genshin Impact, Honkai Star Rail...</p>
+                        <a href="#" class="btn btn-sm">Xem thêm</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/300/180" alt="FPS Games">
+                    </div>
+                    <div class="category-content">
+                        <h3>FPS Games</h3>
+                        <p>Valorant, CS:GO, Call of Duty...</p>
+                        <a href="#" class="btn btn-sm">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tài khoản nổi bật</h2>
+                <p>Những tài khoản game được săn đón nhiều nhất</p>
+            </div>
+            
+            <div class="products">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/220" alt="League of Legends Account">
+                        <div class="product-tag">HOT</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Tài khoản Liên Minh VIP</h3>
+                        <div class="product-meta">
+                            <div class="product-game">Liên Minh Huyền Thoại</div>
+                            <div class="product-level">Level 250</div>
+                        </div>
+                        <div class="product-price">650.000đ <span>850.000đ</span></div>
+                        <div class="product-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 120+ tướng</li>
+                                <li><i class="fas fa-check-circle"></i> 90+ trang phục</li>
+                                <li><i class="fas fa-check-circle"></i> Rank Cao Thủ</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-sm">Mua ngay</a>
+                            <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/220" alt="Genshin Impact Account">
+                        <div class="product-tag">-30%</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Tài khoản Genshin Impact</h3>
+                        <div class="product-meta">
+                            <div class="product-game">Genshin Impact</div>
+                            <div class="product-level">AR 58</div>
+                        </div>
+                        <div class="product-price">800.000đ <span>1.100.000đ</span></div>
+                        <div class="product-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 15+ nhân vật 5 sao</li>
+                                <li><i class="fas fa-check-circle"></i> 10+ vũ khí 5 sao</li>
+                                <li><i class="fas fa-check-circle"></i> 20.000+ nguyên thạch</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-sm">Mua ngay</a>
+                            <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/400/220" alt="PUBG Mobile Account">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Tài khoản PUBG Mobile</h3>
+                        <div class="product-meta">
+                            <div class="product-game">PUBG Mobile</div>
+                            <div class="product-level">Level 70</div>
+                        </div>
+                        <div class="product-price">500.000đ <span>650.000đ</span></div>
+                        <div class="product-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 50+ trang phục hiếm</li>
+                                <li><i class="fas fa-check-circle"></i> Tất cả skin súng</li>
+                                <li><i class="fas fa-check-circle"></i> Conqueror 3 mùa</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-sm">Mua ngay</a>
+                            <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Khách hàng nói gì</h2>
+                <p>Những đánh giá từ khách hàng đã mua tài khoản</p>
+            </div>
+            
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Tôi đã mua tài khoản Liên Minh Huyền Thoại từ GameAccounts và rất hài lòng với chất lượng. Tài khoản có đúng như mô tả và quá trình giao dịch diễn ra nhanh chóng, an toàn. Chắc chắn sẽ quay lại!"</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Customer">
+                        <div class="author-info">
+                            <h4>Nguyễn Văn A</h4>
+                            <p>Khách hàng thân thiết</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Sẵn sàng nâng cấp trải nghiệm game?</h2>
+            <p>Đ
