@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Hung-store-v0.5.html",
+      "use": "@vercel/html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/store",
+      "dest": "/Hung-store-v0.5.html"
+    }
+  ]
+}
